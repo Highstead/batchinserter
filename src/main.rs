@@ -51,5 +51,6 @@ fn main() {
     println!("Host: {}", host);
     println!("Port: {}", port);
     println!("Username: {}", username);
-    println!("Password: {}", password); //TODO never do this obviously...
+    println!("Password: {}", password); //TODO never do this obviously...  We only do this because
+                                        //i want this to compile
 }
