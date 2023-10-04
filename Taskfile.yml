@@ -13,8 +13,8 @@ vars:
 tasks:
   up:
     summary: Spins up docker environment
-    # status:
-    #   - psql "postgres://root:postgres@localhost:26257"
+    status:
+      - psql "postgres://postgres:postgres@localhost" -c "SELECT VERSION();" > /dev/null
     silent: true
     cmds:
       - echo "Spinning up docker containers"

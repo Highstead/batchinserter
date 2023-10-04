@@ -19,6 +19,4 @@ impl Database {
 
         Ok(user)
     }
-
-    pub async fn insert_user_by_id(&self, user_id: i32) -> RESULT
 }
