@@ -1,0 +1,31 @@
+version: "3"
+
+vars:
+  APP:
+    sh: basename $(pwd)
+
+  ROOT_DIR:
+    sh: root=`pwd`; while [ ! -z "$root" ] && [ ! -f "$root/.gitignore" ]; do root=$(dirname $root); done; echo $root
+  BIN_DIR:
+    sh: echo {{.ROOT_DIR}}/bin
+  POSTGRES_PORT: 5432
+
+tasks:
+  up:
+    summary: Spins up docker environment
+    # status:
+    #   - psql "postgres://root:postgres@localhost:26257"
+    silent: true
+    cmds:
+      - echo "Spinning up docker containers"
+      - docker-compose up -d
+      - echo "docker up"
+
+  down:
+    summary: Spins down docker environment
+    silent: true
+      # status:
+      #   - psql "postgres://root:postgres@localhost:$POSTGRES_PORT" -c "SELECT VERSION()"
+    cmds:
+      - echo "shutting down docker"
+      - docker-compose down
