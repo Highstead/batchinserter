@@ -1,6 +1,11 @@
 version: "3"
 
 vars:
+  PGHOST: "localhost"
+  PGPORT: "5432"
+  PGUSER: "postgres"
+  PGPASSWORD: "postgres"
+
   APP:
     sh: basename $(pwd)
 
@@ -20,6 +25,7 @@ tasks:
       - echo "Spinning up docker containers"
       - docker-compose up -d
       - echo "docker up"
+      - ./sql/populate.sh
 
   down:
     summary: Spins down docker environment
